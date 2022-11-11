@@ -1,16 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { BookInterface } from './interfaces/book.interface';
+import { InjectRepository } from "@nestjs/typeorm";
+import { Book } from "./entities/book.entity";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class BooksService {
-  create(createBookDto: CreateBookDto): BookInterface{
-    const book: BookInterface = {
-      id: 1,
-      titulo: 'La triste vida de un programador',
-      autor: 'Juan Valdivia',
-      paginas: 250
-    }
-    return book;
+  constructor(@InjectRepository(Book) private bookRepository: Repository<Book>) {
+  }
+  create(createBookDto: CreateBookDto){
+    return this.bookRepository.save(createBookDto);
   }
 }
