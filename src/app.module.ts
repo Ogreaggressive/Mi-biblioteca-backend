@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { BooksModule } from './books/books.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { SongsModule } from './songs/songs.module';
+import { DogsModule } from './dogs/dogs.module';
+import { BurgersModule } from './burgers/burgers.module';
+import { AccessoriesModule } from './accessories/accessories.module';
 
 @Module({
   imports: [
@@ -13,12 +16,15 @@ import { SongsModule } from './songs/songs.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '123456',
-      database: 'ucb',
+      password: 'nico123',
+      database: 'nicolas_schema',
       synchronize: true,
       autoLoadEntities: true,
     }),
     SongsModule,
+    DogsModule,
+    BurgersModule,
+    AccessoriesModule
   ],
   controllers: [AppController],
   providers: [AppService],

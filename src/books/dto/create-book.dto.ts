@@ -3,3 +3,4 @@ export class CreateBookDto {
   autor: string;
   paginas: number;
 }
+
